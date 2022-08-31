@@ -1,4 +1,5 @@
 from itertools import combinations
+import time
 
 table = [('Action-1', 20, 5), ('Action-2', 30, 10), ('Action-3', 50, 15),
          ('Action-4', 70, 20), ('Action-5', 60, 17), ('Action-6', 80, 25),
@@ -7,6 +8,16 @@ table = [('Action-1', 20, 5), ('Action-2', 30, 10), ('Action-3', 50, 15),
          ('Action-13', 38, 23), ('Action-14', 14, 1), ('Action-15', 18, 3),
          ('Action-16', 8, 8), ('Action-17', 4, 12), ('Action-18', 10, 14),
          ('Action-19', 24, 21), ('Action-20', 114, 18)]
+
+start_time = time.time()
+
+
+def main():
+    solution = bruteforce(table, 500)
+    print("Best actions for 500 € :", solution[0],
+          "\nTotal Cost : ", solution[1],
+          "\nTotal Profit (after 2 years) : ", solution[2],
+          "\nin : ", time.time() - start_time, " seconds")
 
 
 def bruteforce(table_actions, max_cost):
@@ -39,7 +50,5 @@ def get_profit(actions):
     return profit
 
 
-solution = bruteforce(table, 500)
-print("Best actions for 500 € :", solution[0],
-      "\nTotal Cost : ", solution[1],
-      "\nTotal Profit (after 2 years) : ", solution[2])
+if __name__ == "__main__":
+    main()
